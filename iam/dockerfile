@@ -1,0 +1,20 @@
+# Use a imagem base do sistema operacional (por exemplo, Ubuntu, Alpine, etc.)
+FROM ubuntu:latest
+
+# Copie o arquivo de variáveis de ambiente para o contêiner
+COPY env /app/env
+
+# Copie o arquivo de keystore.jks para o contêiner
+COPY keystore.jks /app/keystore.jks
+
+# Configure as variáveis de ambiente no contêiner
+ENV IAM_LOGIN_SERVICE_PORT=8080
+
+# Exponha a porta necessária
+EXPOSE 8080
+
+# Especifica o diretório de trabalho
+WORKDIR /app
+
+# Comando de execução do serviço
+CMD ["./iam-login-service"]

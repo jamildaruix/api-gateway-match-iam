@@ -25,3 +25,6 @@ services:
       - "8444:8444"
       - "80:8000"
       - "443:8443"
+  ldap:
+    image: toniblyx/prowler
+    restart: always
