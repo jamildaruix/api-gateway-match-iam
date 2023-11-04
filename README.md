@@ -64,6 +64,35 @@ Com isso vou ter o ambiente montado e elaborado para apresentação
 
 # Kong
 
+kong plugins list
+
+
 Teste Mock http://localhost/mock
 
 API http://localhost:8001/
+
+keycloack
+
+https://github.com/d4rkstar/kong-konga-keycloak
+
+https://www.krakend.io/docs/overview/
+
+https://www.keycloak.org/docs/latest/server_admin/
+
+https://openid.net/specs/openid-connect-registration-1_0.html
+
+https://github.com/keycloak/keycloak
+
+https://www.keycloak.org/downloads.html
+
+https://dev.delivery/seguranca-de-aplicacoes-com-keycloak/
+
+https://dev.to/robincher/securing-your-site-via-oidc-powered-by-kong-and-keycloak-2ccc
+
+https://github.com/gbbirkisson/kong-plugin-jwt-keycloak
+
+https://marraia.medium.com/utiliza%C3%A7%C3%A3o-do-keycloak-em-aplica%C3%A7%C3%B5es-net-6-0-4a787520c85b
+
+https://docs.konghq.com/hub/kong-inc/openid-connect/
+
+https://hub.docker.com/r/marcelmaatkamp/kong-with-plugins

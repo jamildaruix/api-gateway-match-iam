@@ -6,6 +6,29 @@ services:
    name: example_service
    port: 80
    protocol: http
+   plugins:
+   - name: jwt-keycloak
+     config:
+       uri_param_names:
+        - jwt
+       claims_to_verify:
+       - exp
+       allowed_iss:
+       - http://localhost:8080/auth/realms/airfare
+       #well_known_template: "%s/.well-known/openid-configuration"
+     #anonymous: null
+     #run_on_preflight: true
+     #maximum_expiration: 0
+     #algorithm: RS256
+     #iss_key_grace_period: 1
+     #scope: null
+     #roles: null
+     #realm_roles: null
+     #client_roles: null
+     #consumer_match: false
+     #consumer_match_claim: azp
+     #consumer_match_claim_custom_id: false
+     #consumer_match_ignore_not_found: false
    routes:
    - name: example_route
      paths:

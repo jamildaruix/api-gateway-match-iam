@@ -1,7 +1,11 @@
 version: "3.8"
 
 networks:
- kong-net:
+ poc:
+
+volumes:
+  postgres_data:
+      driver: local
 
 services:
   kong:
@@ -11,7 +15,7 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     networks:
-      - kong-net
+      - poc
     environment:
       - KONG_DATABASE=off
       - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
@@ -19,12 +23,37 @@ services:
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
       - KONG_PROXY_ERROR_LOG=/dev/stderr
       - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_PLUGINS=bundled,jwt-keycloak
       - KONG_DECLARATIVE_CONFIG=/usr/local/etc/kong/kong.yml
     ports:
       - "8001:8001"
       - "8444:8444"
       - "80:8000"
       - "443:8443"
-  ldap:
-    image: toniblyx/prowler
-    restart: always
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      networks:
+        - poc      
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password
+  keycloak:
+      image: quay.io/keycloak/keycloak:legacy
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: postgres
+        DB_DATABASE: keycloak
+        DB_USER: keycloak
+        DB_SCHEMA: public
+        DB_PASSWORD: password
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: Pa55w0rd
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+      networks:
+        - poc
