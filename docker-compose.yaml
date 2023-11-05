@@ -16,6 +16,8 @@ services:
     restart: unless-stopped
     networks:
       - poc
+    depends_on:
+      - keycloak
     environment:
       - KONG_DATABASE=off
       - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl

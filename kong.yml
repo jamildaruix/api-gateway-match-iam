@@ -2,12 +2,23 @@ _format_version: "1.1"
 _transform: true
 
 services:
- - host: mockbin.org
-   name: example_service
+ - name: keycloak-service
+   host: keycloak
+   port: 8080
+   routes:
+   - name: keycloak-route-auth
+     paths:
+     - /auth
+     methods:
+     - GET
+
+ - name: mockbin_service 
+   host: mockbin.org
    port: 80
    protocol: http
    plugins:
    - name: jwt-keycloak
+     enabled: false
      config:
        uri_param_names:
         - jwt
@@ -30,7 +41,7 @@ services:
      #consumer_match_claim_custom_id: false
      #consumer_match_ignore_not_found: false
    routes:
-   - name: example_route
+   - name: mock_route
      paths:
      - /mock
      strip_path: true

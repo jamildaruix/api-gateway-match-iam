@@ -1,0 +1,28 @@
+_format_version: "1.1"
+_transform: true
+
+services:
+  - name: key-cloak-service
+    url: http://localhost:8080/auth
+    routes:
+      - name: key-cloak-route-auth
+        paths:
+          - /auth
+        methods:
+          - GET
+  - name: mock-service 
+    url: http://mockbin.org/mock
+#    plugins:
+#      - name: jwt-keycloak
+#        config:
+#          uri_param_names:
+#            - jwt
+#          claims_to_verify:
+#            - exp
+#          allowed_iss:
+#            - http://localhost:8080/auth/realms/airfare
+    routes:
+      - name: route-mock
+        paths:
+          - /mock
+        strip_path: true
