@@ -8,9 +8,11 @@ services:
    routes:
    - name: keycloak-route-auth
      paths:
-     - /auth
+     - /realms/master/protocol/openid-connect/auth
      methods:
      - GET
+     - OPTIONS
+     strip_path: true
 
  - name: mockbin_service 
    host: mockbin.org
