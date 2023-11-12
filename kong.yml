@@ -20,15 +20,16 @@ services:
    protocol: http
    plugins:
    - name: jwt-keycloak
-     enabled: false
+     enabled: true
      config:
-       uri_param_names:
-        - jwt
-       claims_to_verify:
-       - exp
-       allowed_iss:
-       - http://localhost:8080/auth/realms/airfare
-       #well_known_template: "%s/.well-known/openid-configuration"
+       well_known_template: "http://keycloak:8080/auth/realms/airfrae/.well-known/openid-configuration"
+       #- "%s/.well-known/openid-configuration"
+       allowed_iss: 
+       - "http://localhost:8080/auth/realms/airfare"
+#       uri_param_names:
+#        - jwt
+#       claims_to_verify:
+#       - exp
      #anonymous: null
      #run_on_preflight: true
      #maximum_expiration: 0
