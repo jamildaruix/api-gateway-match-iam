@@ -22,7 +22,7 @@ services:
    - name: jwt-keycloak
      enabled: true
      config:
-       well_known_template: "http://keycloak:8080/auth/realms/airfrae/.well-known/openid-configuration"
+       well_known_template: "http://keycloak:8080/auth/realms/airfare/.well-known/openid-configuration"
        #- "%s/.well-known/openid-configuration"
        allowed_iss: 
        - "http://localhost:8080/auth/realms/airfare"
@@ -30,19 +30,6 @@ services:
 #        - jwt
 #       claims_to_verify:
 #       - exp
-     #anonymous: null
-     #run_on_preflight: true
-     #maximum_expiration: 0
-     #algorithm: RS256
-     #iss_key_grace_period: 1
-     #scope: null
-     #roles: null
-     #realm_roles: null
-     #client_roles: null
-     #consumer_match: false
-     #consumer_match_claim: azp
-     #consumer_match_claim_custom_id: false
-     #consumer_match_ignore_not_found: false
    routes:
    - name: mock_route
      paths:

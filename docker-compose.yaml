@@ -55,9 +55,9 @@ services:
         KEYCLOAK_USER: admin
         KEYCLOAK_PASSWORD: Pa55w0rd
         PROXY_ADDRESS_FORWARDING: true
-        KC_HOSTNAME: localhost
+        KC_HOSTNAME: keycloak
         KC_HOSTNAME_PATH: auth
-        KC_HOSTNAME_ADMIN: localhost
+        KC_HOSTNAME_ADMIN: keycloak
         KC_HOSTNAME_PORT: 443
       ports:
         - 8080:8080
