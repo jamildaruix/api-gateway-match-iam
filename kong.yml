@@ -2,18 +2,6 @@ _format_version: "1.1"
 _transform: true
 
 services:
- - name: keycloak-service
-   host: keycloak
-   port: 8080
-   routes:
-   - name: keycloak-route-auth
-     paths:
-     - /realms/master/protocol/openid-connect/auth
-     methods:
-     - GET
-     - OPTIONS
-     strip_path: true
-
  - name: mockbin_service 
    host: mockbin.org
    port: 80
@@ -23,13 +11,8 @@ services:
      enabled: true
      config:
        well_known_template: "http://keycloak:8080/auth/realms/airfare/.well-known/openid-configuration"
-       #- "%s/.well-known/openid-configuration"
        allowed_iss: 
        - "http://localhost:8080/auth/realms/airfare"
-#       uri_param_names:
-#        - jwt
-#       claims_to_verify:
-#       - exp
    routes:
    - name: mock_route
      paths:

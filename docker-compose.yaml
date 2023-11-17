@@ -32,16 +32,6 @@ services:
       - "8444:8444"
       - "80:8000"
       - "443:8443"
-  postgres:
-      image: postgres
-      volumes:
-        - postgres_data:/var/lib/postgresql/data
-      networks:
-        - poc      
-      environment:
-        POSTGRES_DB: keycloak
-        POSTGRES_USER: keycloak
-        POSTGRES_PASSWORD: password
   keycloak:
       container_name: keycloak
       image: quay.io/keycloak/keycloak:legacy
@@ -65,3 +55,13 @@ services:
         - postgres
       networks:
         - poc
+  postgres:
+      image: postgres
+      volumes:
+        - postgres_data:/var/lib/postgresql/data
+      networks:
+        - poc      
+      environment:
+        POSTGRES_DB: keycloak
+        POSTGRES_USER: keycloak
+        POSTGRES_PASSWORD: password  
